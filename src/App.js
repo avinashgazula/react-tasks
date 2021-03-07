@@ -6,10 +6,14 @@ function App() {
 
   const [tasks, setTasks] = useState([{ id: 1, name: "t1", day: "d1" }, { id: 2, name: "t2", day: "d2" }])
 
+  const deleteTask = (id) => {
+    setTasks(tasks.filter(task => task.id !== id))
+  }
+
   return (
     <div className="container">
       <Header />
-      <Tasks tasks={tasks} />
+      <Tasks onDelete={deleteTask} tasks={tasks} />
     </div>
   );
 }
